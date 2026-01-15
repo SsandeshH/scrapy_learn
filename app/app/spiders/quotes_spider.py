@@ -10,12 +10,12 @@ class QuoteSpider(scrapy.Spider):
 
     def parse(self, response):
         quote_div = response.css('div.quote')
-        appItem = AppItem()
-
+        
         for data in quote_div:
+            appItem = AppItem()
             quote = data.css('span.text::text').extract()
             author = data.css('small.author::text').extract()
-            tags = data.css('div.tag::text').extract()
+            tags = data.css('a.tag::text').extract()
 
             appItem['quote'] = quote
             appItem['author'] = author
