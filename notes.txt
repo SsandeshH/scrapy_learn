@@ -19,3 +19,13 @@ projectname
 Use of Item:
 We work on dictionaries, but it is inconsitent and unstructured in larger project and Spiders.
 Scraped Data ---> Temporary Container (Items) ----> Database
+
+So create items on items.py , import it into your crawler and use items to temporarily store the data.
+
+we can output the data in json,xml,csv
+scrapy crawl -o data.csv or .xml or .json
+
+If we have to send the data to SQL or NoSQL db, we have to use Pipelines
+First we "uncomment" Item_pipelines from settings.py to enable pipelining. We can also add more pielines. The lower the number in pipeline, higher the priority
+
+

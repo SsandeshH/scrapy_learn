@@ -6,8 +6,29 @@
 
 # useful for handling different item types with a single interface
 from itemadapter import ItemAdapter
-
+import sqlite3
 
 class AppPipeline:
+    def __init__(self):
+        self.create_connection()
+        self.create_table()
+
+    def create_connection(self):
+        self.conn = sqlite3.connect("quote_database.db")
+        self.curr = self.conn.cursor()
+    
+    def create_table(self):
+        self.curr.execute("""Drop table if exists quote_data""")
+        self.curr.execute("""Create table quote_data (quote text,author text,tags text)""")
+
+
     def process_item(self, item, spider):
+        self.send_data(item)
         return item
+
+    def send_data(self, item):
+        self.curr.execute(
+            """INSERT INTO quote_data VALUES (?, ?, ?)""",
+            (item['quote'][0], item['author'][0], item['tags'][0])
+        )
+        self.conn.commit()
