@@ -26,6 +26,9 @@ we can output the data in json,xml,csv
 scrapy crawl -o data.csv or .xml or .json
 
 If we have to send the data to SQL or NoSQL db, we have to use Pipelines
-First we "uncomment" Item_pipelines from settings.py to enable pipelining. We can also add more pielines. The lower the number in pipeline, higher the priority
+First we "uncomment" Item_pipelines from settings.py to enable pipelining. We can also add more pielines. 
+The lower the number in pipeline, higher the priority. Create Methods of classes . Pipelines are auto called upon, when we crawl and yield.
+
+
 
 
