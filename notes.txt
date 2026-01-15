@@ -1,0 +1,21 @@
+Scrapy Framework
+
+pip install scrapy
+
+Start a project:
+scrapy startproject <name of project>
+
+folder Structure:
+projectname
+    -spiders #where we write our crawlers
+        - __init__.py
+        - crawl-file.py
+    
+    - items.py #contains items of webpages, like product_name, product_price which we select while crawling
+    - pipelines.py # Storing configuration, SQL,JSON,NoSQL etc
+    - middlewares.py #Adding stuffs on request, like in user_agent . adding proxy happpens in middlewares
+    - settings.py #contains configuration for crawler
+
+Use of Item:
+We work on dictionaries, but it is inconsitent and unstructured in larger project and Spiders.
+Scraped Data ---> Temporary Container (Items) ----> Database
